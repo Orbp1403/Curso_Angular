@@ -11,4 +11,8 @@ export class LibrosComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  eliminarLibro(libro) {
+    this.libros = this.libros.filter((p) => p !== libro);
+  }
 }

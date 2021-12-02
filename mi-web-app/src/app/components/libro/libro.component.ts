@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-libro',
@@ -7,8 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LibroComponent implements OnInit {
   @Input() tituloLibro: string = "";
+  @Output() libroClicked = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onClicked(){
+    this.libroClicked.emit()
+  }
 }
