@@ -1,0 +1,88 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="registrarUsuario(f)"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field>
+      <mat-label>Ingrese Nombre</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="nombre"
+        required
+        placeholder="Ingrese su nombre"
+        matInput
+        autocomplete="off"
+      />
+      <mat-error>Debe Ingresar un nombre</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese Apellidos</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="apellidos"
+        required
+        placeholder="Ingrese sus apellidos"
+        matInput
+        autocomplete="off"
+      />
+      <mat-error>Debe ingresar los apellidos.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese Username</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="username"
+        required
+        placeholder="username"
+        matInput
+        autocomplete="off"
+      />
+      <mat-error>Debe ingresar un username</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese un correo electronico</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Ingrese un correo electronico"
+        ngModel
+        name="email"
+        email
+        required
+        autocomplete="off"
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')">
+        El email no puede estar en blanco.
+      </mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >El email es invalido.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field hintLabel="La contraseña debe tener 7 caracteres">
+      <mat-label>Ingrese una contraseña</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Ingresar Contraseña"
+        ngModel
+        name="password"
+        required
+        autocomplete="off"
+        minlength="7"
+      />
+      <mat-error>La contraseña debe tener al menos 7 caracteres.</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Guardar</button>
+  </form>
+</section>
